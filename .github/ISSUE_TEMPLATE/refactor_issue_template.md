@@ -1,3 +1,8 @@
+---
+name: refactor_template
+about: Use this template when creating a code refactoring issue
+---
+
 ## 🔍 현재 어떤 부분을 리팩터링하나요? (As-Is)
 
 > 리팩터링이 필요한 파일/로직/컴포넌트와 그 이유를 구체적으로 작성해 주세요.  
