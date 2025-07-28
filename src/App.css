@@ -103,10 +103,22 @@ body {
   opacity: 0.85;
   cursor: pointer;
   transition: color 0.2s, opacity 0.2s;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .nav-icon:hover {
   color: #ff2e2e;
   opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+.nav-icon:focus {
+  outline: 2px solid #ff2e2e;
+  outline-offset: 2px;
 }
 .nav-logo-img {
   width: 100px;

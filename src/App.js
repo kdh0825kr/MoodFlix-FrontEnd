@@ -27,13 +27,13 @@ function App() {
   return (
     <div className="main-layout soft-bg">
       {/* 좌측 세로 네비게이션 */}
-      <aside className="side-nav soft-nav">
+      <aside className="side-nav soft-nav" role="navigation" aria-label="Main navigation">
         <img src="/MoodFlix (Logo).png" alt="MoodFLIX Logo" className="nav-logo-img" />
         <nav className="icon-nav">
-          <FaHome className="nav-icon" />
-          <FaSearch className="nav-icon" />
-          <FaPlus className="nav-icon" />
-          <FaCalendarAlt className="nav-icon" />
+          <button className="nav-icon" aria-label="Home"><FaHome /></button>
+          <button className="nav-icon" aria-label="Search"><FaSearch /></button>
+          <button className="nav-icon" aria-label="Add content"><FaPlus /></button>
+          <button className="nav-icon" aria-label="Calendar"><FaCalendarAlt /></button>
         </nav>
       </aside>
       {/* 우측 메인 컨텐츠 */}
