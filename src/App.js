@@ -40,12 +40,17 @@ function App() {
       <main className="main-content soft-main">
         {/* 배너 */}
         <section className="banner-area soft-banner">
-          <img className="banner-img" src="https://www.themoviedb.org/t/p/original/2xjA2dF74r6nG3cF6Gk5QhQ2F3S.jpg" alt="Money Heist" />
+          <img 
+            className="banner-img" 
+            src="https://www.themoviedb.org/t/p/original/2xjA2dF74r6nG3cF6Gk5QhQ2F3S.jpg" 
+            alt="Money Heist promotional banner showing the main characters"
+            loading="lazy"
+          />
           <div className="banner-overlay soft-banner-overlay" />
           <div className="banner-texts">
             <h1 className="banner-title soft-banner-title">MONEY <span className="banner-title-red">HEIST</span></h1>
-            <div className="banner-sub">PART 4</div>
-            <button className="trailer-btn2 soft-btn">예고편 보기</button>
+            <p className="banner-sub">PART 4</p>
+            <button className="trailer-btn2 soft-btn" aria-label="Watch Money Heist Part 4 trailer">예고편 보기</button>
           </div>
         </section>
         {/* 이번주 신작 */}
