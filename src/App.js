@@ -58,8 +58,8 @@ function App() {
           <h2 className="movie-section-title">이번주 신작</h2>
           <div className="movie-row">
             {newMovies.map((m) => (
-              <div className="movie-card3 soft-card" key={m.id}>
-                <img src={m.img} alt={m.title} />
+              <div className="movie-card3 soft-card" key={m.id} role="button" tabIndex="0">
+                <img src={m.img} alt={`${m.title} movie poster`} loading="lazy" />
                 <div className="movie-card-title">{m.title}</div>
               </div>
             ))}
@@ -70,8 +70,8 @@ function App() {
           <h2 className="movie-section-title">인기작</h2>
           <div className="movie-row">
             {popularMovies.map((m) => (
-              <div className="movie-card3 soft-card" key={m.id}>
-                <img src={m.img} alt={m.title} />
+              <div className="movie-card3 soft-card" key={m.id} role="button" tabIndex="0">
+                <img src={m.img} alt={`${m.title} movie poster`} loading="lazy" />
                 <div className="movie-card-title">{m.title}</div>
               </div>
             ))}
