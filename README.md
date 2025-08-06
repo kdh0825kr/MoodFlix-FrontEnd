@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# MoodFlix - 감정 기반 영화 추천 서비스
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MoodFlix는 사용자의 현재 감정 상태에 맞춰 영화를 추천해주는 스트리밍 서비스 스타일의 웹 애플리케이션입니다. 직관적인 감정 선택 인터페이스와 모던한 UI를 통해 개인화된 영화 추천 경험을 제공합니다.
 
-## Available Scripts
+## 🎯 주요 기능
 
-In the project directory, you can run:
+### 감정 기반 추천 시스템
+- 😊 **감정 선택**: 행복, 슬픔, 신남, 평온, 로맨틱, 벅참 등 6가지 감정 카테고리
+- 💬 **자유 텍스트 입력**: 더 구체적인 기분 상태를 텍스트로 입력 가능
+- 🎬 **개인화된 추천**: 선택된 감정에 맞는 영화 추천
 
-### `npm start`
+### 사용자 인터페이스
+- 🎨 **모던한 디자인**: Netflix 스타일의 다크 테마 기반 UI
+- 🎭 **인터랙티브 요소**: 호버 효과, 애니메이션, 시각적 피드백
+- 🧭 **직관적 네비게이션**: 사이드바 기반 네비게이션 시스템
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 영화 콘텐츠
+- 🎬 **메인 섹션**: 메인 영화 하이라이트 (Money Heist Part 4)
+- 🆕 **이번주 신작**: 최신 영화 컬렉션
+- 🔥 **인기작**: 인기 영화 컬렉션
+- 🎭 **다양한 장르**: 액션, 드라마, 로맨스, 스릴러 등
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🎨 디자인
 
-### `npm test`
+### 색상 팔레트
+- **Primary**: 다크 테마 기반 (#0f0f0f, #1a1a1a)
+- **Accent**: 감정별 색상 (행복: #FFD700, 슬픔: #87CEEB, 신남: #FF6B6B, 평온: #98FB98, 로맨틱: #FF69B4, 벅참: #DDA0DD)
+- **Text**: 고대비 가독성 (#ffffff, #cccccc)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 타이포그래피
+- **제목**: 굵은 폰트 웨이트, 큰 사이즈
+- **본문**: 가독성 높은 폰트, 적절한 라인 높이
+- **버튼**: 명확한 액션 표시
 
-### `npm run build`
+### 레이아웃
+- **Grid 시스템**: 반응형 그리드 레이아웃
+- **Flexbox**: 유연한 컴포넌트 배치
+- **CSS Variables**: 일관된 스타일링
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔧 주요 컴포넌트
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 감정 선택 컴포넌트
+- 6가지 감정 카테고리 (이모지 아이콘 포함)
+- 선택 상태 시각적 피드백
+- 반응형 그리드 레이아웃
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 네비게이션 컴포넌트
+- 사이드바 레이아웃
+- 아이콘 기반 네비게이션
+- 로고 표시
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**MoodFlix** - 당신의 감정을 영화로 표현하세요 🎬✨
