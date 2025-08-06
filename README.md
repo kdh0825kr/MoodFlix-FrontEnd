@@ -49,40 +49,11 @@ MoodFlix는 사용자의 현재 감정 상태에 맞춰 영화를 추천해주�
 - 아이콘 기반 네비게이션
 - 로고 표시
 
-## 🚀 시작하기
-
-### 필수 조건
-- Node.js (v14 이상)
-- npm 또는 yarn
-
-### 설치 및 실행
-```bash
-# 저장소 클론
-git clone https://github.com/MoodFlix00/MoodFlix-FrontEnd.git
-
-# 프로젝트 디렉토리로 이동
-cd MoodFlix-FrontEnd
-
-# 의존성 설치
-npm install
-
-# 개발 서버 실행
-npm start
-```
-
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 애플리케이션을 확인하세요.
-
 ## 🛠️ 기술 스택
 
 - **Frontend**: React.js
 - **Styling**: CSS3, CSS Grid, Flexbox
 - **Icons**: React Icons
 - **Build Tool**: Create React App
-
-## 📱 반응형 디자인
-
-- 데스크톱, 태블릿, 모바일 디바이스 지원
-- 적응형 레이아웃 및 터치 친화적 인터페이스
-- 다양한 화면 크기에 최적화된 UI
 
 **MoodFlix** - 당신의 감정을 영화로 표현하세요 🎬✨
