@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# MoodFLIX - 영화 추천 페이지
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 스트리밍 서비스 스타일의 영화 추천 페이지입니다. 다크 테마를 기반으로 한 모던한 UI를 제공합니다.
 
-## Available Scripts
+## 주요 기능
 
-In the project directory, you can run:
+- 🎬 **히어로 섹션**: 메인 영화 하이라이트 (Money Heist Part 4)
+- 📺 **영화 카테고리**: "이번주 신작"과 "인기작" 섹션
+- 🎨 **반응형 디자인**: 모바일, 태블릿, 데스크톱 지원
+- 🎯 **인터랙티브 요소**: 호버 효과와 애니메이션
+- 📱 **사이드바 네비게이션**: 홈, 검색, 추가, 캘린더 아이콘
 
-### `npm start`
+## 기술 스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 18
+- React Icons
+- CSS3 (Grid, Flexbox)
+- 반응형 웹 디자인
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 설치 및 실행
 
-### `npm test`
+```bash
+# 의존성 설치
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 개발 서버 실행
+npm start
 
-### `npm run build`
+# 프로덕션 빌드
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 프로젝트 구조
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── App.js          # 메인 컴포넌트
+├── App.css         # 스타일시트
+├── index.js        # 앱 진입점
+└── index.css       # 글로벌 스타일
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 디자인 특징
 
-### `npm run eject`
+- **다크 테마**: Netflix 스타일의 어두운 배경
+- **그라데이션 효과**: 히어로 섹션의 시각적 임팩트
+- **카드 레이아웃**: 영화 포스터를 그리드로 배치
+- **호버 애니메이션**: 사용자 인터랙션 향상
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 브라우저 지원
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Chrome (최신 버전)
+- Firefox (최신 버전)
+- Safari (최신 버전)
+- Edge (최신 버전)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 라이선스
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License
