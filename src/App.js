@@ -1,77 +1,104 @@
-import React from 'react';
-import { FaHome, FaSearch, FaPlus, FaCalendarAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
 import './App.css';
-
-const newMovies = [
-  { title: 'The Mother', img: 'https://image.tmdb.org/t/p/w500/8QVDXDiOGHRcAD4oM6MXjE0osSj.jpg' },
-  { title: 'Blood & Gold', img: 'https://image.tmdb.org/t/p/w500/6yr8c6JjSxQ6nKUg4BMVFKUMlQ8.jpg' },
-  { title: 'F9', img: 'https://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg' },
-  { title: 'Perfection', img: 'https://image.tmdb.org/t/p/w500/4U7hpTK0XTQBKT5M6tyDsqbJm7c.jpg' },
-  { title: 'Extraction', img: 'https://image.tmdb.org/t/p/w500/wlfDxbGEsW58vGhFljKkcR5IxDj.jpg' },
-  { title: 'Jawan', img: 'https://image.tmdb.org/t/p/w500/rl6U5ZQkpU6F2acK1b5G5FzUz6A.jpg' },
-  { title: 'Transformers', img: 'https://image.tmdb.org/t/p/w500/6oH378KUfCEitzJkm07r97L0RsZ.jpg' },
-  { title: 'IO', img: 'https://image.tmdb.org/t/p/w500/1yeVJox3rjo2jBKrrihIMj7uoS9.jpg' },
-];
-const popularMovies = [
-  { title: 'Pathaan', img: 'https://image.tmdb.org/t/p/w500/6nU6zJbSgVwPlQkJwQp0h8l4hK6.jpg' },
-  { title: 'Echoes', img: 'https://image.tmdb.org/t/p/w500/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg' },
-  { title: 'Peaky Blinders', img: 'https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg' },
-  { title: 'Beast', img: 'https://image.tmdb.org/t/p/w500/wE0I6efAW4WE0XKkfzXz5E5GkHh.jpg' },
-  { title: '83', img: 'https://image.tmdb.org/t/p/w500/1t0kA1t9Qd1Z4Vfqaki3P6KyHRc.jpg' },
-  { title: 'Gray Man', img: 'https://image.tmdb.org/t/p/w500/8cXbitsS6dWQ5gfMTZdorpAAzEH.jpg' },
-  { title: 'Money Heist', img: 'https://image.tmdb.org/t/p/w500/moZgkT7t5FQFZ5j5YjZLwNG0Ax7.jpg' },
-  { title: 'Vikram', img: 'https://image.tmdb.org/t/p/w500/1m3WgLaD1KxwFZz0R6Vtu3kHni.jpg' },
-];
+import { FaHome, FaSearch, FaPlus, FaCalendar, FaStar, FaHeart, FaHeartBroken } from 'react-icons/fa';
+import { GiPeaceDove } from 'react-icons/gi';
+import { BsEmojiSmile, BsEmojiFrown, BsEmojiSunglasses } from 'react-icons/bs';
 
 function App() {
+  const [selectedMood, setSelectedMood] = useState(null);
+  const [moodDescription, setMoodDescription] = useState('');
+
+  const emotions = [
+    { id: 'happy', icon: BsEmojiSmile, text: '행복해요', color: '#FFD700' },
+    { id: 'sad', icon: BsEmojiFrown, text: '슬퍼요', color: '#87CEEB' },
+    { id: 'excited', icon: BsEmojiSunglasses, text: '신나요', color: '#FF6B6B' },
+    { id: 'peaceful', icon: GiPeaceDove, text: '평온해요', color: '#98FB98' },
+    { id: 'romantic', icon: FaHeart, text: '로맨틱해요', color: '#FF69B4' },
+    { id: 'anxious', icon: FaHeartBroken, text: '불안해요', color: '#DDA0DD' }
+  ];
+
+  const handleMoodSelect = (moodId) => {
+    setSelectedMood(moodId);
+  };
+
+  const handleGetRecommendations = () => {
+    if (selectedMood || moodDescription.trim()) {
+      alert('영화 추천을 준비 중입니다...');
+      // 여기에 실제 추천 로직을 구현할 수 있습니다
+    } else {
+      alert('감정을 선택하거나 기분을 설명해주세요!');
+    }
+  };
+
   return (
-    <div className="main-layout soft-bg">
-      {/* 좌측 세로 네비게이션 */}
-      <aside className="side-nav soft-nav">
-        <img src="/MoodFlix (Logo).png" alt="MoodFLIX Logo" className="nav-logo-img" />
-        <nav className="icon-nav">
+    <div className="app">
+      {/* 왼쪽 네비게이션 바 */}
+      <nav className="sidebar">
+        <div className="logo-section">
+          <img src="/MoodFlix (Logo).png" alt="MoodFlix Logo" className="logo-image" />
+        </div>
+        <div className="nav-icons">
           <FaHome className="nav-icon" />
           <FaSearch className="nav-icon" />
           <FaPlus className="nav-icon" />
-          <FaCalendarAlt className="nav-icon" />
-        </nav>
-      </aside>
-      {/* 우측 메인 컨텐츠 */}
-      <main className="main-content soft-main">
-        {/* 배너 */}
-        <section className="banner-area soft-banner">
-          <img className="banner-img" src="https://www.themoviedb.org/t/p/original/2xjA2dF74r6nG3cF6Gk5QhQ2F3S.jpg" alt="Money Heist" />
-          <div className="banner-overlay soft-banner-overlay" />
-          <div className="banner-texts">
-            <h1 className="banner-title soft-banner-title">MONEY <span className="banner-title-red">HEIST</span></h1>
-            <div className="banner-sub">PART 4</div>
-            <button className="trailer-btn2 soft-btn">예고편 보기</button>
+          <FaCalendar className="nav-icon" />
+        </div>
+      </nav>
+
+      {/* 메인 콘텐츠 */}
+      <main className="main-content">
+        <div className="content-card">
+          {/* 메인 타이틀 섹션 */}
+          <div className="title-section">
+            <h1 className="main-title">당신의 감정을 영화로</h1>
+            <p className="subtitle">오늘의 기분에 맞는 완벽한 영화를 찾아보세요</p>
           </div>
-        </section>
-        {/* 이번주 신작 */}
-        <section className="movie-section">
-          <h2 className="movie-section-title">이번주 신작</h2>
-          <div className="movie-row">
-            {newMovies.map((m) => (
-              <div className="movie-card3 soft-card" key={m.title}>
-                <img src={m.img} alt={m.title} />
-                <div className="movie-card-title">{m.title}</div>
-              </div>
-            ))}
+
+          {/* 감정 선택 섹션 */}
+          <div className="emotion-section">
+            <h2 className="emotion-title">지금 기분이 어떠신가요?</h2>
+            <div className="emotion-grid">
+              {emotions.map((emotion) => {
+                const IconComponent = emotion.icon;
+                return (
+                  <button
+                    key={emotion.id}
+                    className={`emotion-btn ${selectedMood === emotion.id ? 'selected' : ''}`}
+                    onClick={() => handleMoodSelect(emotion.id)}
+                    style={{
+                      borderColor: selectedMood === emotion.id ? emotion.color : 'transparent'
+                    }}
+                  >
+                    <IconComponent className="emotion-icon" />
+                    <span className="emotion-text">{emotion.text}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </section>
-        {/* 인기작 */}
-        <section className="movie-section">
-          <h2 className="movie-section-title">인기작</h2>
-          <div className="movie-row">
-            {popularMovies.map((m) => (
-              <div className="movie-card3 soft-card" key={m.title}>
-                <img src={m.img} alt={m.title} />
-                <div className="movie-card-title">{m.title}</div>
-              </div>
-            ))}
+
+          {/* 텍스트 입력 필드 */}
+          <div className="input-section">
+            <input
+              type="text"
+              className="mood-input"
+              placeholder="더 자세히 오늘의 기분을 알려주세요... 예: 오늘 너무 기분이 좋아 짱이야 행복해"
+              value={moodDescription}
+              onChange={(e) => setMoodDescription(e.target.value)}
+            />
           </div>
-        </section>
+
+          {/* 추천 버튼 */}
+          <div className="action-section">
+            <button 
+              className="recommend-btn"
+              onClick={handleGetRecommendations}
+            >
+              영화 추천받기
+              <FaStar className="star-icon" />
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );
