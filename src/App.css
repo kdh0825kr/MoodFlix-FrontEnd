@@ -1,266 +1,54 @@
-.soft-bg {
-  background: linear-gradient(135deg, #181a23 0%, #23243a 100%);
+* {
+  margin: 0;
+  padding: 0;
+  /* Reset margin/padding only. box-sizing is set for elements and pseudo-elements below. */
 }
-.soft-nav {
-  background: #181a23;
-  border-top-right-radius: 32px;
-  border-bottom-right-radius: 32px;
-  box-shadow: 4px 0 24px 0 rgba(0,0,0,0.18);
-}
-.soft-logo {
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
-  font-size: 1.7rem;
-  font-weight: 900;
-  color: #ff2e2e;
-  letter-spacing: 1px;
-  margin-bottom: 32px;
-  margin-top: 12px;
-}
-.soft-main {
-  background: rgba(30,32,60,0.10);
-  border-radius: 32px;
-  margin: 12px 12px 12px 0;
-  padding: 24px 24px 0 24px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-}
-.soft-banner {
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  margin-bottom: 32px;
-  position: relative;
-  min-height: 420px;
-  height: 420px;
-}
-.soft-banner-overlay {
-  border-radius: 24px;
-  background: linear-gradient(90deg, #181a23 0%, rgba(24,26,35,0.1) 100%);
-  opacity: 0.85;
-}
-.soft-banner-title {
-  font-size: 3.2rem;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-.soft-btn, .trailer-btn2 {
-  border-radius: 24px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #ff7e5f 0%, #feb47b 100%);
-  color: #fff;
-  border: none;
-  padding: 18px 56px;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-}
-.soft-btn:hover {
-  background: linear-gradient(90deg, #feb47b 0%, #ff7e5f 100%);
-  transform: scale(1.04);
-}
-.soft-card {
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  overflow: hidden;
-  background: #23243a;
-  transition: transform 0.18s, box-shadow 0.18s;
-}
-.soft-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+
+/* Ensure box-sizing applies to pseudo-elements, too */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #101010;
-}
-.main-layout {
-  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282a36;
+  color: white;
+  line-height: 1.5;
+  color-scheme: dark;
+  /* Fallback + modern viewport unit for mobile browsers */
   min-height: 100vh;
-  font-family: 'Inter', 'Noto Sans KR', sans-serif;
-}
-.side-nav {
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 24px;
-  gap: 32px;
-}
-.icon-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  align-items: center;
-}
-.nav-icon {
-  color: #fff;
-  font-size: 1.4rem;
-  opacity: 0.85;
-  cursor: pointer;
-  transition: color 0.2s, opacity 0.2s;
-  background: none;
-  border: none;
-  padding: 8px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.nav-icon:hover {
-  color: #ff2e2e;
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
-}
-.nav-icon:focus {
-  outline: 2px solid #ff2e2e;
-  outline-offset: 2px;
-}
-.nav-logo-img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  display: block;
-}
-.main-content {
-  flex: 1;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-.banner-area {
-  position: relative;
-  width: 100%;
-  height: 260px;
-  min-width: 0;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-.banner-overlay {
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
-  z-index: 1;
-}
-.banner-texts {
-  position: absolute;
-  left: 72px;
-  bottom: 60px;
-  z-index: 2;
-  color: #fff;
-}
-.banner-title {
-  font-size: 2.8rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin: 0;
-  color: #fff;
-  display: inline-block;
-}
-.banner-title-red {
-  color: #ff2e2e;
-  font-weight: 900;
-  margin-left: 8px;
-}
-.banner-sub {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 16px 0 28px 0;
-  color: #fff;
-  opacity: 0.85;
-}
-.trailer-btn2:hover {
-  background: #ff2e2e;
-  color: #fff;
-}
-.movie-section {
-  margin: 36px 0 0 0;
-  padding-left: 36px;
-}
-.movie-section-title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 18px;
-  margin-top: 0;
-  letter-spacing: 0.5px;
-}
-.movie-row {
-  display: flex;
-  gap: 32px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scrollbar-width: thin;
-  scrollbar-color: #333 #101010;
-}
-.movie-row::-webkit-scrollbar {
-  height: 8px;
-}
-.movie-row::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 8px;
-}
-.movie-card3, .soft-card {
-  min-width: 220px;
-  max-width: 220px;
-  height: 340px;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #23243a;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.18s, box-shadow 0.18s;
-  cursor: pointer;
-}
-.movie-card3 img, .soft-card img {
-  width: 100%;
-  height: 290px;
-  object-fit: cover;
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
-}
-.movie-card-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #fff;
-  margin-top: 12px;
-  text-align: center;
-  padding: 0 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.movie-card3:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-}
-.movie-card3:focus {
-  outline: 2px solid #ff2e2e;
-  outline-offset: 2px;
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  min-height: 100dvh;
 }
 
-@media (max-width: 1100px) {
-  .soft-main { padding: 8px 2px 0 2px; margin: 8px 8px 8px 0; }
-  .soft-banner { min-height: 220px; height: 220px; }
-  .banner-title, .soft-banner-title { font-size: 1.5rem; }
-  .banner-texts { left: 18px; bottom: 18px; }
-  .movie-card3, .soft-card { min-width: 120px; max-width: 120px; height: 180px; border-radius: 8px; }
-  .movie-card3 img, .soft-card img { height: 100px; border-top-left-radius: 8px; border-top-right-radius: 8px; }
-  .movie-card-title { font-size: 0.7rem; margin-top: 4px; padding: 0 2px; }
+.app {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #282a36;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduce motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

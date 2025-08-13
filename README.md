@@ -49,11 +49,4 @@ MoodFlix는 사용자의 현재 감정 상태에 맞춰 영화를 추천해주�
 - 아이콘 기반 네비게이션
 - 로고 표시
 
-## 🛠️ 기술 스택
-
-- **Frontend**: React.js
-- **Styling**: CSS3, CSS Grid, Flexbox
-- **Icons**: React Icons
-- **Build Tool**: Create React App
-
 **MoodFlix** - 당신의 감정을 영화로 표현하세요 🎬✨
