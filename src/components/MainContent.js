@@ -31,6 +31,7 @@ const MainContent = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            if (!canRecommend) return;
             onGetRecommendations();
           }}
         >
