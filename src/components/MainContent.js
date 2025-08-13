@@ -35,9 +35,11 @@ const MainContent = ({
           }}
         >
           {/* 텍스트 입력 필드 */}
-          <MoodInput 
-            value={moodDescription} 
-            onChange={onMoodDescriptionChange} 
+          <MoodInput
+            id="mood-description"
+            label="오늘의 기분 설명"
+            value={moodDescription}
+            onChange={onMoodDescriptionChange}
           />
 
           {/* 추천 버튼 */}
