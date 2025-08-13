@@ -13,8 +13,9 @@
 }
 
 .logo-image {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  max-width: 100%;
   object-fit: contain;
   border-radius: 8px;
 }
