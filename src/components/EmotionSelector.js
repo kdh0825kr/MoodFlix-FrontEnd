@@ -30,8 +30,12 @@ const EmotionSelector = ({ selectedMood, onMoodSelect }) => {
 };
 
 EmotionSelector.propTypes = {
-  selectedMood: PropTypes.string,
+  selectedMood: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
   onMoodSelect: PropTypes.func.isRequired,
+};
+
+EmotionSelector.defaultProps = {
+  selectedMood: null,
 };
 
 export default EmotionSelector;

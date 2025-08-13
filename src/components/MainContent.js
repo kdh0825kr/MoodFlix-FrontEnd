@@ -51,12 +51,16 @@ const MainContent = ({
 };
 
 MainContent.propTypes = {
-  selectedMood: PropTypes.string,
+  selectedMood: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
   moodDescription: PropTypes.string.isRequired,
   canRecommend: PropTypes.bool.isRequired,
   onMoodSelect: PropTypes.func.isRequired,
   onMoodDescriptionChange: PropTypes.func.isRequired,
   onGetRecommendations: PropTypes.func.isRequired,
+};
+
+MainContent.defaultProps = {
+  selectedMood: null,
 };
 
 export default MainContent;
