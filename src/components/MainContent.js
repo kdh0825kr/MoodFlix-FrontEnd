@@ -27,14 +27,21 @@ const MainContent = ({
           onMoodSelect={onMoodSelect} 
         />
 
-        {/* 텍스트 입력 필드 */}
-        <MoodInput 
-          value={moodDescription} 
-          onChange={onMoodDescriptionChange} 
-        />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onGetRecommendations();
+          }}
+        >
+          {/* 텍스트 입력 필드 */}
+          <MoodInput 
+            value={moodDescription} 
+            onChange={onMoodDescriptionChange} 
+          />
 
-        {/* 추천 버튼 */}
-        <RecommendButton onClick={onGetRecommendations} />
+          {/* 추천 버튼 */}
+          <RecommendButton />
+        </form>
       </div>
     </main>
   );
