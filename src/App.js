@@ -8,6 +8,7 @@ function App() {
   const {
     selectedMood,
     moodDescription,
+    canRecommend,
     handleMoodSelect,
     handleMoodDescriptionChange,
     handleGetRecommendations
@@ -19,6 +20,7 @@ function App() {
       <MainContent 
         selectedMood={selectedMood}
         moodDescription={moodDescription}
+        canRecommend={canRecommend}
         onMoodSelect={handleMoodSelect}
         onMoodDescriptionChange={handleMoodDescriptionChange}
         onGetRecommendations={handleGetRecommendations}

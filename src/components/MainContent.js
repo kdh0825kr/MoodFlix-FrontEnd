@@ -8,6 +8,7 @@ import './MainContent.css';
 const MainContent = ({ 
   selectedMood, 
   moodDescription, 
+  canRecommend,
   onMoodSelect, 
   onMoodDescriptionChange, 
   onGetRecommendations 
@@ -40,7 +41,7 @@ const MainContent = ({
           />
 
           {/* 추천 버튼 */}
-          <RecommendButton />
+          <RecommendButton disabled={!canRecommend} />
         </form>
       </div>
     </main>
@@ -50,6 +51,7 @@ const MainContent = ({
 MainContent.propTypes = {
   selectedMood: PropTypes.string,
   moodDescription: PropTypes.string.isRequired,
+  canRecommend: PropTypes.bool.isRequired,
   onMoodSelect: PropTypes.func.isRequired,
   onMoodDescriptionChange: PropTypes.func.isRequired,
   onGetRecommendations: PropTypes.func.isRequired,

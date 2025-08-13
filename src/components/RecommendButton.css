@@ -18,13 +18,13 @@
   box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
 }
 
-.recommend-btn:hover {
+.recommend-btn:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
   background: linear-gradient(135deg, #ff5722, #ff9800);
 }
 
-.recommend-btn:focus-visible {
+.recommend-btn:focus-visible:not(:disabled) {
   outline: 3px solid #ffb86c;
   outline-offset: 2px;
   transform: translateY(-3px);
@@ -32,8 +32,21 @@
   background: linear-gradient(135deg, #ff5722, #ff9800);
 }
 
-.recommend-btn:active {
+.recommend-btn:active:not(:disabled) {
   transform: translateY(-1px);
+}
+
+.recommend-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.recommend-btn:disabled .star-icon {
+  animation: none;
+  opacity: 0.5;
 }
 
 .star-icon {

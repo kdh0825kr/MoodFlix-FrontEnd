@@ -1,19 +1,24 @@
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 export const useMood = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const [moodDescription, setMoodDescription] = useState('');
 
-  const handleMoodSelect = (moodId) => {
+  const handleMoodSelect = useCallback((moodId) => {
     setSelectedMood(moodId);
-  };
+  }, []);
 
-  const handleMoodDescriptionChange = (description) => {
+  const handleMoodDescriptionChange = useCallback((description) => {
     setMoodDescription(description);
-  };
+  }, []);
 
-  const handleGetRecommendations = () => {
-    if (selectedMood || moodDescription.trim()) {
+  const canRecommend = useMemo(
+    () => Boolean(selectedMood || moodDescription.trim()),
+    [selectedMood, moodDescription]
+  );
+
+  const handleGetRecommendations = useCallback(() => {
+    if (canRecommend) {
       // TODO: 실제 API 호출로 교체
       console.log('Selected mood:', selectedMood);
       console.log('Mood description:', moodDescription);
@@ -22,11 +27,12 @@ export const useMood = () => {
     } else {
       alert('감정을 선택하거나 기분을 설명해주세요!');
     }
-  };
+  }, [canRecommend, selectedMood, moodDescription]);
 
   return {
     selectedMood,
     moodDescription,
+    canRecommend,
     handleMoodSelect,
     handleMoodDescriptionChange,
     handleGetRecommendations
