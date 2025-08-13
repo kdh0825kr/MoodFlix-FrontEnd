@@ -38,6 +38,14 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+.emotion-btn:focus-visible {
+  outline: 3px solid #ffb86c;
+  outline-offset: 2px;
+  background-color: #6272a4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
 .emotion-btn.selected {
   background-color: #6272a4;
   transform: translateY(-2px);

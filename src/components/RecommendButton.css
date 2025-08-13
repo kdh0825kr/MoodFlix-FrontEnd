@@ -24,6 +24,14 @@
   background: linear-gradient(135deg, #ff5722, #ff9800);
 }
 
+.recommend-btn:focus-visible {
+  outline: 3px solid #ffb86c;
+  outline-offset: 2px;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+}
+
 .recommend-btn:active {
   transform: translateY(-1px);
 }
