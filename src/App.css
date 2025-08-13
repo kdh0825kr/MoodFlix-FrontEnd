@@ -17,11 +17,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #282a36;
   color: white;
+  line-height: 1.5;
+  color-scheme: dark;
+  /* Fallback + modern viewport unit for mobile browsers */
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .app {
   display: flex;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: #282a36;
+}
+
+/* Reduce motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
