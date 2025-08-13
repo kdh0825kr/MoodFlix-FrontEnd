@@ -13,11 +13,11 @@ const MainContent = ({
   onGetRecommendations 
 }) => {
   return (
-    <main className="main-content">
+    <main className="main-content" aria-labelledby="main-title">
       <div className="content-card">
         {/* 메인 타이틀 섹션 */}
         <div className="title-section">
-          <h1 className="main-title">당신의 감정을 영화로</h1>
+          <h1 id="main-title" className="main-title">당신의 감정을 영화로</h1>
           <p className="subtitle">오늘의 기분에 맞는 완벽한 영화를 찾아보세요</p>
         </div>
 
