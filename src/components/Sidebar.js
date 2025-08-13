@@ -9,10 +9,18 @@ const Sidebar = () => {
         <img src="/MoodFlix (Logo).png" alt="MoodFlix Logo" className="logo-image" />
       </div>
       <div className="nav-icons">
-        <FaHome className="nav-icon" />
-        <FaSearch className="nav-icon" />
-        <FaPlus className="nav-icon" />
-        <FaCalendar className="nav-icon" />
+        <button className="nav-icon" aria-label="홈">
+          <FaHome />
+        </button>
+        <button className="nav-icon" aria-label="검색">
+          <FaSearch />
+        </button>
+        <button className="nav-icon" aria-label="추가">
+          <FaPlus />
+        </button>
+        <button className="nav-icon" aria-label="캘린더">
+          <FaCalendar />
+        </button>
       </div>
     </nav>
   );

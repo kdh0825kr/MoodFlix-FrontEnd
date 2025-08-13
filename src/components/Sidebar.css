@@ -1,3 +1,8 @@
+:root {
+  --accent-color: #e50914;
+  --focus-color: #ff6b35;
+}
+
 .sidebar {
   width: 80px;
   background-color: #1a1a1a;
@@ -28,13 +33,26 @@
 
 .nav-icon {
   font-size: 24px;
-  color: white;
+  color: var(--accent-color, white);
   cursor: pointer;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-icon:hover {
-  color: #e50914;
+  color: var(--accent-color);
+}
+
+.nav-icon:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+  color: var(--accent-color);
 }
 
 /* 반응형 디자인 */
