@@ -1,0 +1,60 @@
+.action-section {
+  text-align: center;
+}
+
+.recommend-btn {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border: none;
+  border-radius: 25px;
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.recommend-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+}
+
+.recommend-btn:active {
+  transform: translateY(-1px);
+}
+
+.star-icon {
+  font-size: 16px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .recommend-btn {
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommend-btn {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+}

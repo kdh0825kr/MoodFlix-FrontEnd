@@ -1,0 +1,64 @@
+.sidebar {
+  width: 80px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #333;
+}
+
+.logo-section {
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.logo-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.nav-icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: #e50914;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+  
+  .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px;
+  }
+  
+  .logo-image {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .nav-icon {
+    font-size: 20px;
+  }
+}
