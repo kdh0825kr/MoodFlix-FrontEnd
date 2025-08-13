@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EmotionSelector from './EmotionSelector';
 import MoodInput from './MoodInput';
 import RecommendButton from './RecommendButton';
@@ -37,6 +38,14 @@ const MainContent = ({
       </div>
     </main>
   );
+};
+
+MainContent.propTypes = {
+  selectedMood: PropTypes.string,
+  moodDescription: PropTypes.string.isRequired,
+  onMoodSelect: PropTypes.func.isRequired,
+  onMoodDescriptionChange: PropTypes.func.isRequired,
+  onGetRecommendations: PropTypes.func.isRequired,
 };
 
 export default MainContent;

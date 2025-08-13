@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MoodInput.css';
 
 const MoodInput = ({ value, onChange }) => {
@@ -13,6 +14,11 @@ const MoodInput = ({ value, onChange }) => {
       />
     </div>
   );
+};
+
+MoodInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default MoodInput;

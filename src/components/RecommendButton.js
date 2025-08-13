@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import './RecommendButton.css';
 
@@ -14,6 +15,10 @@ const RecommendButton = ({ onClick }) => {
       </button>
     </div>
   );
+};
+
+RecommendButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default RecommendButton;

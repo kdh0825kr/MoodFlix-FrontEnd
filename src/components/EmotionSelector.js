@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { emotions } from '../constants/emotions';
 import './EmotionSelector.css';
 
@@ -26,6 +27,11 @@ const EmotionSelector = ({ selectedMood, onMoodSelect }) => {
       </div>
     </div>
   );
+};
+
+EmotionSelector.propTypes = {
+  selectedMood: PropTypes.string,
+  onMoodSelect: PropTypes.func.isRequired,
 };
 
 export default EmotionSelector;
