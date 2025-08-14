@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import EmotionSelector from './EmotionSelector';
 import MoodInput from './MoodInput';
 import RecommendButton from './RecommendButton';
+import { FaHome } from 'react-icons/fa';
 import './MainContent.css';
 
 const MainContent = ({ 
@@ -11,14 +12,24 @@ const MainContent = ({
   canRecommend,
   onMoodSelect, 
   onMoodDescriptionChange, 
-  onGetRecommendations 
+  onGetRecommendations,
+  onGoHome
 }) => {
   return (
     <main className="main-content" aria-labelledby="main-title">
       <div className="content-card">
         {/* 메인 타이틀 섹션 */}
         <div className="title-section">
-          <h1 id="main-title" className="main-title">당신의 감정을 영화로</h1>
+          <div className="title-header">
+            <h1 id="main-title" className="main-title">당신의 감정을 영화로</h1>
+            <button 
+              className="home-button"
+              onClick={onGoHome}
+              aria-label="홈으로 돌아가기"
+            >
+              <FaHome />
+            </button>
+          </div>
           <p className="subtitle">오늘의 기분에 맞는 완벽한 영화를 찾아보세요</p>
         </div>
 
@@ -58,6 +69,7 @@ MainContent.propTypes = {
   onMoodSelect: PropTypes.func.isRequired,
   onMoodDescriptionChange: PropTypes.func.isRequired,
   onGetRecommendations: PropTypes.func.isRequired,
+  onGoHome: PropTypes.func.isRequired,
 };
 
 MainContent.defaultProps = {
