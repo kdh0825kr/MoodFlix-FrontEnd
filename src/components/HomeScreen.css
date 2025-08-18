@@ -1,0 +1,202 @@
+.home-screen {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #282a36 0%, #44475a 100%);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.home-content {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  background: rgba(54, 57, 73, 0.95);
+  border-radius: 20px;
+  padding: 60px 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-section {
+  margin-bottom: 40px;
+}
+
+.home-logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.welcome-section {
+  margin-bottom: 50px;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffb86c;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ffb86c, #ff79c6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subtitle {
+  font-size: 1.3rem;
+  color: #f8f8f2;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.welcome-description {
+  font-size: 1.1rem;
+  color: #bd93f9;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.action-section {
+  margin-bottom: 50px;
+}
+
+.start-button {
+  background: linear-gradient(135deg, #ffb86c 0%, #ff79c6 100%);
+  color: #282a36;
+  border: none;
+  padding: 18px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 184, 108, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(255, 184, 108, 0.4);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.start-button:hover::before {
+  left: 100%;
+}
+
+.features-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 184, 108, 0.1);
+  border: 1px solid rgba(255, 184, 108, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 184, 108, 0.15);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.feature-text {
+  font-size: 0.9rem;
+  color: #f8f8f2;
+  font-weight: 500;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .home-content {
+    padding: 40px 20px;
+    width: 95%;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-description {
+    font-size: 1rem;
+  }
+  
+  .start-button {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+  }
+  
+  .features-section {
+    gap: 20px;
+  }
+  
+  .feature-item {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content {
+    padding: 30px 15px;
+    width: 98%;
+  }
+  
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  
+  .features-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

@@ -25,10 +25,13 @@ body {
 }
 
 .app {
-  display: flex;
   min-height: 100vh;
   min-height: 100dvh;
   background-color: #282a36;
+}
+
+.app.home-view {
+  display: flex;
 }
 
 /* Screen reader only class for accessibility */

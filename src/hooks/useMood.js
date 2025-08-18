@@ -3,6 +3,7 @@ import { useState, useCallback, useMemo } from 'react';
 export const useMood = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const [moodDescription, setMoodDescription] = useState('');
+  const [showHome, setShowHome] = useState(true);
 
   const handleMoodSelect = useCallback((moodId) => {
     setSelectedMood(moodId);
@@ -10,6 +11,16 @@ export const useMood = () => {
 
   const handleMoodDescriptionChange = useCallback((description) => {
     setMoodDescription(description);
+  }, []);
+
+  const handleStartApp = useCallback(() => {
+    setShowHome(false);
+  }, []);
+
+  const handleGoHome = useCallback(() => {
+    setShowHome(true);
+    setSelectedMood(null);
+    setMoodDescription('');
   }, []);
 
   const canRecommend = useMemo(
@@ -33,8 +44,11 @@ export const useMood = () => {
     selectedMood,
     moodDescription,
     canRecommend,
+    showHome,
     handleMoodSelect,
     handleMoodDescriptionChange,
-    handleGetRecommendations
+    handleGetRecommendations,
+    handleStartApp,
+    handleGoHome
   };
 };
