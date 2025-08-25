@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import KakaoLogin from './KakaoLogin';
 import './HomeScreen.css';
 
 const HomeScreen = ({ onStart }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const handleLoginSuccess = (data) => {
+    setIsLoggedIn(true);
+    setUserInfo(data);
+    console.log('로그인 성공:', data);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserInfo(null);
+    // 카카오 액세스 토큰 제거
+    if (window.Kakao && window.Kakao.Auth.getAccessToken()) {
+      window.Kakao.Auth.logout();
+    }
+  };
+
   return (
     <div className="home-screen">
       <div className="home-content">
@@ -24,15 +43,33 @@ const HomeScreen = ({ onStart }) => {
           </p>
         </div>
 
-        <div className="action-section">
-          <button 
-            className="start-button"
-            onClick={onStart}
-            aria-label="MoodFlix 시작하기"
-          >
-            시작하기
-          </button>
-        </div>
+        {/* 로그인 상태에 따른 조건부 렌더링 */}
+        {!isLoggedIn ? (
+          <div className="login-section">
+            <KakaoLogin onLoginSuccess={handleLoginSuccess} />
+            <p className="login-description">
+              카카오 계정으로 간편하게 로그인하고 개인화된 영화 추천을 받아보세요
+            </p>
+          </div>
+        ) : (
+          <div className="user-section">
+            <div className="user-info">
+              <span className="user-welcome">안녕하세요, {userInfo?.name || '사용자'}님!</span>
+              <button className="logout-button" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
+            <div className="action-section">
+              <button 
+                className="start-button"
+                onClick={onStart}
+                aria-label="MoodFlix 시작하기"
+              >
+                시작하기
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="features-section">
           <div className="feature-item">

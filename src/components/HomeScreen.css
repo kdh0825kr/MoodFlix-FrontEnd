@@ -152,6 +152,60 @@
   font-weight: 500;
 }
 
+/* 로그인 섹션 스타일 */
+.login-section {
+  margin-bottom: 50px;
+}
+
+.login-description {
+  font-size: 1rem;
+  color: #bd93f9;
+  margin-top: 20px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* 사용자 섹션 스타일 */
+.user-section {
+  margin-bottom: 50px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 184, 108, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 184, 108, 0.2);
+}
+
+.user-welcome {
+  font-size: 1.2rem;
+  color: #f8f8f2;
+  font-weight: 600;
+}
+
+.logout-button {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background: rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   .home-content {
