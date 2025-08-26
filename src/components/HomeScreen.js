@@ -1,8 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import KakaoLogin from './KakaoLogin';
+import { useAuth } from '../hooks/useAuth';
 import './HomeScreen.css';
 
 const HomeScreen = ({ onStart }) => {
+  const { user, isAuthenticated, isLoading, error, login, logout, clearError } = useAuth();
+  const [loginError, setLoginError] = useState(null);
+
+  const handleLoginSuccess = async (data) => {
+    try {
+      clearError(); // useAuth 훅 에러 초기화
+      
+      // 백엔드로 로그인 요청
+      await login(data.kakaoAccessToken, data.userInfo);
+      if (process.env.MODE_ENV !== 'production') {
+        console.debug('백엔드 로그인 성공');
+      }
+    } catch (error) {
+      // useAuth.login 내부에서 이미 setError 처리됨
+      if (process.env.MODE_ENV !== 'production') {
+        console.error('백엔드 로그인 실패:', error);
+      }
+    }
+  };
+
+  const handleLoginError = (errorMessage) => {
+    setLoginError(errorMessage);
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  const handleStartApp = () => {
+    if (isAuthenticated) {
+      onStart();
+    }
+  };
+
+  // 로딩 중일 때 표시
+  if (isLoading) {
+    return (
+      <div className="home-screen">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>로딩 중...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="home-screen">
       <div className="home-content">
@@ -24,15 +72,44 @@ const HomeScreen = ({ onStart }) => {
           </p>
         </div>
 
-        <div className="action-section">
-          <button 
-            className="start-button"
-            onClick={onStart}
-            aria-label="MoodFlix 시작하기"
-          >
-            시작하기
-          </button>
-        </div>
+        {/* 에러 메시지 표시 */}
+        {(error || loginError) && (
+          <div className="error-message">
+            <p>{error || loginError}</p>
+            <button onClick={() => { setLoginError(null); clearError(); }}>닫기</button>
+          </div>
+        )}
+
+        {/* 로그인 상태에 따른 조건부 렌더링 */}
+        {!isAuthenticated ? (
+          <div className="login-section">
+            <KakaoLogin 
+              onLoginSuccess={handleLoginSuccess} 
+              onLoginError={handleLoginError}
+            />
+            <p className="login-description">
+              카카오 계정으로 간편하게 로그인하고 개인화된 영화 추천을 받아보세요
+            </p>
+          </div>
+        ) : (
+          <div className="user-section">
+            <div className="user-info">
+              <span className="user-welcome">안녕하세요, {user?.name || '사용자'}님!</span>
+              <button className="logout-button" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
+            <div className="action-section">
+              <button 
+                className="start-button"
+                onClick={handleStartApp}
+                aria-label="MoodFlix 시작하기"
+              >
+                시작하기
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="features-section">
           <div className="feature-item">
