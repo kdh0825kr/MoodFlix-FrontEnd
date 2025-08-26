@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 import './HomeScreen.css';
 
 const HomeScreen = ({ onStart }) => {
-  const { user, isAuthenticated, isLoading, error, login, logout, cleanError } = useAuth();
+  const { user, isAuthenticated, isLoading, error, login, logout, clearError } = useAuth();
   const [loginError, setLoginError] = useState(null);
 
   const handleLoginSuccess = async (data) => {
@@ -73,7 +73,7 @@ const HomeScreen = ({ onStart }) => {
         {(error || loginError) && (
           <div className="error-message">
             <p>{error || loginError}</p>
-            <button onClick={() => { setLoginError(null); cleanError(); }}>닫기</button>
+            <button onClick={() => { setLoginError(null); clearError(); }}>닫기</button>
           </div>
         )}
 
