@@ -55,7 +55,7 @@ export const kakaoLogin = async (kakaoAccessToken, userInfo) => {
     
     return data;
   } catch (error) {
-    if (process.env.MODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       console.error('카카오 로그인 API 호출 실패:', error?.response?.status, error?.message);
     }
     throw error;

@@ -10,15 +10,18 @@ const HomeScreen = ({ onStart }) => {
 
   const handleLoginSuccess = async (data) => {
     try {
-      setLoginError(null);
+      clearError(); // useAuth 훅 에러 초기화
       
       // 백엔드로 로그인 요청
       await login(data.kakaoAccessToken, data.userInfo);
-      
-      console.log('백엔드 로그인 성공');
+      if (process.env.MODE_ENV !== 'production') {
+        console.debug('백엔드 로그인 성공');
+      }
     } catch (error) {
-      console.error('백엔드 로그인 실패:', error);
-      setLoginError(error.message || '로그인에 실패했습니다.');
+      // useAuth.login 내부에서 이미 setError 처리됨
+      if (process.env.MODE_ENV !== 'production') {
+        console.error('백엔드 로그인 실패:', error);
+      }
     }
   };
 
