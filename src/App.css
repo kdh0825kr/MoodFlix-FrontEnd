@@ -24,14 +24,47 @@ body {
   min-height: 100dvh;
 }
 
+/* 기존 스타일 유지 */
 .app {
+  text-align: center;
   min-height: 100vh;
-  min-height: 100dvh;
-  background-color: #282a36;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
 .app.home-view {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 로딩 스타일 */
+.app-loading {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.app-loading p {
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
 
 /* Screen reader only class for accessibility */

@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './KakaoLogin.css';
 
-const KakaoLogin = ({ onLoginSuccess }) => {
+const KakaoLogin = ({ onLoginSuccess, onLoginError }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     // 카카오 SDK 초기화
     if (window.Kakao) {
@@ -11,27 +13,53 @@ const KakaoLogin = ({ onLoginSuccess }) => {
     }
   }, []);
 
-  const handleKakaoLogin = () => {
-    if (window.Kakao) {
-      window.Kakao.Auth.login({
-        success: function(authObj) {
-          console.log('카카오 로그인 성공:', authObj);
-          
-          // 카카오 사용자 정보 가져오기
-          getKakaoUserInfo(authObj.access_token);
-        },
-        fail: function(err) {
-          console.error('카카오 로그인 실패:', err);
-          alert('카카오 로그인에 실패했습니다.');
-        }
+  const handleKakaoLogin = async () => {
+    if (!window.Kakao) {
+      const error = '카카오 SDK를 불러올 수 없습니다.';
+      onLoginError?.(error);
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      
+      // 카카오 로그인 실행
+      const authObj = await new Promise((resolve, reject) => {
+        window.Kakao.Auth.login({
+          success: resolve,
+          fail: reject
+        });
       });
-    } else {
-      alert('카카오 SDK를 불러올 수 없습니다.');
+
+      console.log('카카오 로그인 성공:', authObj);
+      
+      // 카카오 사용자 정보 가져오기
+      const userInfo = await getKakaoUserInfo(authObj.access_token);
+      
+      // 로그인 성공 콜백 호출
+      if (onLoginSuccess) {
+        onLoginSuccess({
+          kakaoAccessToken: authObj.access_token,
+          userInfo
+        });
+      }
+      
+    } catch (error) {
+      console.error('카카오 로그인 실패:', error);
+      const errorMessage = '카카오 로그인에 실패했습니다.';
+      onLoginError?.(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const getKakaoUserInfo = (accessToken) => {
-    if (window.Kakao) {
+    return new Promise((resolve, reject) => {
+      if (!window.Kakao) {
+        reject(new Error('카카오 SDK를 불러올 수 없습니다.'));
+        return;
+      }
+
       window.Kakao.Auth.setAccessToken(accessToken);
       
       window.Kakao.API.request({
@@ -39,26 +67,23 @@ const KakaoLogin = ({ onLoginSuccess }) => {
         success: function(response) {
           console.log('카카오 사용자 정보:', response);
           
-          // 사용자 정보를 가공하여 부모 컴포넌트에 전달
+          // 사용자 정보를 가공
           const userInfo = {
             userId: response.id,
             name: response.properties.nickname,
             email: response.kakao_account.email,
             profileImage: response.properties.profile_image,
-            provider: 'kakao',
-            accessToken: accessToken
+            provider: 'kakao'
           };
           
-          if (onLoginSuccess) {
-            onLoginSuccess(userInfo);
-          }
+          resolve(userInfo);
         },
         fail: function(error) {
           console.error('카카오 사용자 정보 조회 실패:', error);
-          alert('사용자 정보를 가져올 수 없습니다.');
+          reject(new Error('사용자 정보를 가져올 수 없습니다.'));
         }
       });
-    }
+    });
   };
 
   return (
@@ -66,10 +91,13 @@ const KakaoLogin = ({ onLoginSuccess }) => {
       <button 
         className="kakao-login-button"
         onClick={handleKakaoLogin}
+        disabled={isLoading}
         aria-label="카카오로 로그인"
       >
         <span className="kakao-icon">🎯</span>
-        <span className="kakao-text">카카오로 로그인</span>
+        <span className="kakao-text">
+          {isLoading ? '로그인 중...' : '카카오로 로그인'}
+        </span>
       </button>
     </div>
   );

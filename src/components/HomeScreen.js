@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import KakaoLogin from './KakaoLogin';
+import { useAuth } from '../hooks/useAuth';
 import './HomeScreen.css';
 
 const HomeScreen = ({ onStart }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
+  const { user, isAuthenticated, isLoading, error, login, logout } = useAuth();
+  const [loginError, setLoginError] = useState(null);
 
-  const handleLoginSuccess = (data) => {
-    setIsLoggedIn(true);
-    setUserInfo(data);
-    console.log('로그인 성공:', data);
+  const handleLoginSuccess = async (data) => {
+    try {
+      setLoginError(null);
+      
+      // 백엔드로 로그인 요청
+      await login(data.kakaoAccessToken, data.userInfo);
+      
+      console.log('백엔드 로그인 성공');
+    } catch (error) {
+      console.error('백엔드 로그인 실패:', error);
+      setLoginError(error.message || '로그인에 실패했습니다.');
+    }
+  };
+
+  const handleLoginError = (errorMessage) => {
+    setLoginError(errorMessage);
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserInfo(null);
-    // 카카오 액세스 토큰 제거
-    if (window.Kakao && window.Kakao.Auth.getAccessToken()) {
-      window.Kakao.Auth.logout();
+    logout();
+  };
+
+  const handleStartApp = () => {
+    if (isAuthenticated) {
+      onStart();
     }
   };
+
+  // 로딩 중일 때 표시
+  if (isLoading) {
+    return (
+      <div className="home-screen">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>로딩 중...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="home-screen">
@@ -43,10 +69,21 @@ const HomeScreen = ({ onStart }) => {
           </p>
         </div>
 
+        {/* 에러 메시지 표시 */}
+        {(error || loginError) && (
+          <div className="error-message">
+            <p>{error || loginError}</p>
+            <button onClick={() => setLoginError(null)}>닫기</button>
+          </div>
+        )}
+
         {/* 로그인 상태에 따른 조건부 렌더링 */}
-        {!isLoggedIn ? (
+        {!isAuthenticated ? (
           <div className="login-section">
-            <KakaoLogin onLoginSuccess={handleLoginSuccess} />
+            <KakaoLogin 
+              onLoginSuccess={handleLoginSuccess} 
+              onLoginError={handleLoginError}
+            />
             <p className="login-description">
               카카오 계정으로 간편하게 로그인하고 개인화된 영화 추천을 받아보세요
             </p>
@@ -54,7 +91,7 @@ const HomeScreen = ({ onStart }) => {
         ) : (
           <div className="user-section">
             <div className="user-info">
-              <span className="user-welcome">안녕하세요, {userInfo?.name || '사용자'}님!</span>
+              <span className="user-welcome">안녕하세요, {user?.name || '사용자'}님!</span>
               <button className="logout-button" onClick={handleLogout}>
                 로그아웃
               </button>
@@ -62,7 +99,7 @@ const HomeScreen = ({ onStart }) => {
             <div className="action-section">
               <button 
                 className="start-button"
-                onClick={onStart}
+                onClick={handleStartApp}
                 aria-label="MoodFlix 시작하기"
               >
                 시작하기
