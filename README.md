@@ -12,7 +12,7 @@
 ## 🛠️ 기술 스택
 
 ### Frontend
-- React 19.1.1
+- React ^19.1.1
 - CSS3 (Custom Styling)
 - Axios (HTTP Client)
 - JWT Decode (Token Management)
@@ -37,7 +37,7 @@ npm install
 # 백엔드 API 기본 URL
 REACT_APP_API_BASE_URL=http://localhost:8080
 
-# 카카오 JavaScript 키 (선택사항)
+# 카카오 JavaScript 키 (필수)
 REACT_APP_KAKAO_JAVASCRIPT_KEY=your_kakao_javascript_key
 ```
 
@@ -67,7 +67,9 @@ npm start
 2. **백엔드 연동**: 프론트엔드에서 백엔드로 카카오 액세스 토큰과 사용자 정보 전송
 3. **JWT 토큰 발급**: 백엔드에서 JWT 액세스 토큰과 리프레시 토큰 발급
 4. **API 요청**: 이후 모든 API 요청에 JWT 토큰을 Authorization 헤더에 포함
-5. **토큰 갱신**: 액세스 토큰 만료 시 리프레시 토큰으로 자동 갱신
+5. **토큰 갱신**: 액세스 토큰 만료 시 리프레시 토큰으로 갱신
+    - 개발 단계: 수동 갱신(`useAuth` 훅의 `refreshAuthToken` 호출)
+    - 프로덕션 권장: Axios 응답 인터셉터에서 401 발생 시 자동 갱신 구현
 
 ### 환경 설정
 
@@ -87,6 +89,8 @@ npm start
 - HTTPS 통신 권장
 - 토큰 자동 갱신
 - 보안된 API 엔드포인트
+- 토큰 저장 권장: 액세스 토큰은 메모리(또는 In-Memory 스토어), 리프레시 토큰은 HttpOnly + Secure 쿠키 사용 권장
+- XSS 완화: CSP, DOMPurify, 라이브러리/의존성 업데이트, 인터셉터/로깅에서 토큰 마스킹
 
 ## 🌐 배포
 

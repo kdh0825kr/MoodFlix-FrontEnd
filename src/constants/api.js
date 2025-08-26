@@ -36,8 +36,8 @@ export const handleApiError = (error) => {
   if (error.response?.status === 401) {
     // 토큰 만료 시 로그아웃 처리
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    window.location.href = '/';
+    // refreshToken은 즉시 삭제하지 않고 상위에서 갱신/로그아웃을 결정
+    window.location.replace('/');
     return;
   }
   throw error;

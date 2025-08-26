@@ -19,9 +19,21 @@ export const useAuth = () => {
           setUser(userProfile);
           setIsAuthenticated(true);
         } else {
-          // 토큰이 유효하지 않으면 로그아웃 상태로 설정
-          setUser(null);
-          setIsAuthenticated(false);
+          // 토큰이 유효하지 않으면 리프레시 토큰으로 갱신 시도
+         try {
+            const refreshed = await refreshToken();
+            if (refreshed?.accessToken) {
+              const userProfile = await getUserProfile();
+              setUser(userProfile);
+              setIsAuthenticated(true);
+            } else {
+              setUser(null);
+              setIsAuthenticated(false);
+           }
+         } catch (_) {
+           setUser(null);
+           setIsAuthenticated(false);
+         }
         }
       } catch (error) {
         console.error('인증 상태 확인 실패:', error);

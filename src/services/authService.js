@@ -22,7 +22,12 @@ authApi.interceptors.request.use(
 // 응답 인터셉터 - 에러 처리
 authApi.interceptors.response.use(
   (response) => response,
-  (error) => handleApiError(error)
+  (error) => {
+    // handleApiError는 부수효과(토큰 제거/리다이렉트)만 수행할 수 있으므로,
+    // 반드시 호출자에게 에러를 거부(Reject)로 전파합니다.
+    handleApiError(error)
+    return Promise.reject(error);
+  }
 );
 
 // 카카오 로그인 처리
@@ -50,7 +55,9 @@ export const kakaoLogin = async (kakaoAccessToken, userInfo) => {
     
     return data;
   } catch (error) {
-    console.error('카카오 로그인 API 호출 실패:', error);
+    if (process.env.MODE_ENV !== 'production') {
+      console.error('카카오 로그인 API 호출 실패:', error?.response?.status, error?.message);
+    }
     throw error;
   }
 };
@@ -78,7 +85,9 @@ export const refreshToken = async () => {
     
     return data;
   } catch (error) {
-    console.error('토큰 갱신 실패:', error);
+    if (process.env.MODE_ENV !== 'production') {
+      console.error('토큰 갱신 실패:', error?.response?.status, error?.message);
+    }
     throw error;
   }
 };
@@ -89,7 +98,9 @@ export const getUserProfile = async () => {
     const response = await authApi.get(API_ENDPOINTS.USER_PROFILE);
     return handleApiResponse(response);
   } catch (error) {
-    console.error('사용자 프로필 조회 실패:', error);
+    if (process.env.MODE_ENV !== 'production') {
+      console.error('사용자 프로필 조회 실패:', error?.response?.status, error?.message);
+    }
     throw error;
   }
 };
@@ -112,11 +123,10 @@ export const isTokenValid = () => {
   if (!token) return false;
   
   try {
-    // JWT 토큰 만료 시간 확인 (간단한 검증)
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    const currentTime = Date.now() / 1000;
-    
-    return payload.exp > currentTime;
+    // jwt-decode는 base64url 처리 및 안전 파싱을 제공합니다.
+    const { exp } = jwtDecode(token);
+    const currentTime = Math.floor(Date.now() / 1000);
+    return typeof exp === 'number' && exp > currentTime;
   } catch (error) {
     console.error('토큰 검증 실패:', error);
     return false;

@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className={`app ${!showHome ? 'home-view' : ''}`}>
+    <div className={`app ${showHome ? 'home-view' : ''}`}>
       {showHome ? (
         <HomeScreen onStart={handleStartApp} />
       ) : (
