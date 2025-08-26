@@ -41,6 +41,8 @@ REACT_APP_API_BASE_URL=http://localhost:8080
 REACT_APP_KAKAO_JAVASCRIPT_KEY=your_kakao_javascript_key
 ```
 
+참고: 로컬에서 `.env` 파일을 사용하며, 해당 파일은 Git에 커밋되지 않습니다. 예시 템플릿은 `.env.example`를 확인하세요.
+
 ### 3. 개발 서버 실행
 ```bash
 npm start

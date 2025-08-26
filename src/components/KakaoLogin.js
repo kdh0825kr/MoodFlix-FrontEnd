@@ -8,7 +8,13 @@ const KakaoLogin = ({ onLoginSuccess, onLoginError }) => {
     // 카카오 SDK 초기화
     if (window.Kakao) {
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init('affe6164314ed67808f7ac9704c7e236');
+        const kakaoKey = process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY;
+        if (!kakaoKey) {
+          // 개발 편의를 위해 콘솔 경고를 남기고 조기 종료
+          console.warn('REACT_APP_KAKAO_JAVASCRIPT_KEY 환경변수가 설정되지 않았습니다.');
+          return;
+        }
+        window.Kakao.init(kakaoKey);
       }
     }
   }, []);
