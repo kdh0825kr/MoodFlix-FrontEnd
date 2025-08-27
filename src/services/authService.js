@@ -1,5 +1,5 @@
 import axios from 'axios';
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { API_BASE_URL, API_ENDPOINTS, getAuthHeaders, handleApiResponse, handleApiError } from '../constants/api';
 
 // axios 인스턴스 생성
